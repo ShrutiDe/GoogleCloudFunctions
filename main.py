@@ -11,7 +11,7 @@ def scraped_data(request):
     bucket = storage_client.get_bucket(bucket_name)
     blob = bucket.get_blob('BooksData.json')
     fileData = json.loads(blob.download_as_string())
-    print(test)
+    print("test")
     return addCors(json.dumps(fileData))
 
 def addCors(response, code=200):
