@@ -1,10 +1,5 @@
-name: 'gcr.io/cloud-builders/gcloud'
-args:
-  gcloud functions \
-    deploy scraped_data \
-    --runtime=python37 \
-    --trigger-http \
-    --allow-unauthenticated
+#  name: 'gcr.io/cloud-builders/gcloud'
+#  args:
 #  — functions
 #  — deploy: scraped_data
 #  — — runtime=python38
@@ -15,3 +10,5 @@ args:
 #  — scraped_data # Function name
 # #  waitFor: ['_']
 # #  id: 'deploying-a-serverless-function'
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['functions', 'deploy', 'scraped_data', '--trigger-http', '--runtime', 'python37', '--entry-point', 'scraped_data']
