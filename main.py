@@ -17,19 +17,11 @@ def push_test(request):
     
     requestNum = 0
 
-    # request_args = request.args
-    # name = request_args['url']
-
-    # TODO(developer)
     project_id = "faasproject"
     topic_id = "pub-sub-test"
 
     publisher = pubsub_v1.PublisherClient()
-    # The `topic_path` method creates a fully qualified identifier
-    # in the form `projects/{project_id}/topics/{topic_id}`
     topic_path = publisher.topic_path(project_id, topic_id)
-
-
 
     while True:
         
@@ -55,16 +47,7 @@ def push_test(request):
             response = urlopen(req)
             page_content = response.read()
             page_html = BeautifulSoup(page_content, 'lxml')
-            
-    #       Writing to Books.csv
-            # file_name = 'Books.csv' 
-            # with open(file_name, 'w') as f:
-            #     op_writer = csv.writer(f)
 
-            #     field_names = ['Book', 'Review', 'Book Type', 'Cost', 'Rate']
-            #     op_writer.writerow(field_names)
-                
-    #             Fetching data from container
             mv_containers = page_html.find_all('li', class_ = 'zg-item-immersion')
             for container in mv_containers:
                 
@@ -98,8 +81,6 @@ def push_test(request):
                         rate = rate[:3]
                         ratings.append(float(rate))
                         qualities.append(rate)
-
-                        # op_writer.writerow([name,review,material,cost,rate])
 
                         completeData[name] = list()
                         completeData[name].extend(qualities)

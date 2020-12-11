@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - functions
+  - deploy
+  - push_test
+  - --source=.
+  - --trigger-http
+  - --allow-unauthenticated
